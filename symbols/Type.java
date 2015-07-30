@@ -2,7 +2,7 @@ package symbols;
 import lexer.*;
 public class Type extends Word{
     public int width = 0;
-    public Type(String s,int tag, int w){sper(s,tag); width = w;}
+    public Type(String s,int tag, int w){super(s,tag); width = w;}
     public static final Type
         Int = new Type("int", Tag.BASIC, 4),
         Float = new Type("float", Tag.BASIC, 8),
@@ -10,7 +10,7 @@ public class Type extends Word{
         Bool = new Type("bool", Tag.BASIC, 1);
 
     public static boolean numeric(Type p){
-        if(p == Type.Char || p = Type.Int || p == Type.Float) return true;
+        if(p == Type.Char || p == Type.Int || p == Type.Float) return true;
         else return false;
     }
 
