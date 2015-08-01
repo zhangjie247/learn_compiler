@@ -21,7 +21,7 @@ public class Logical extends Expr{
         this.jumping(0,f);
         emit(temp.toString() + " = true");
         emit("goto L"+a);
-        emitlable(f); emit(temp.toString() + " = false");
+        emitlabel(f); emit(temp.toString() + " = false");
         emitlabel(a);
         return temp;
     }

@@ -7,7 +7,7 @@ public class Expr extends Node {
     Expr(Token tok,Type p){op = tok; type = p;}
     public Expr gen(){return this;}
     public Expr reduce() {return this;}
-    public void jumping (String test, int t, int f){
+    public void jumping (int t, int f){
         emitjumps(toString(),t,f);
     }
     public void emitjumps(String test,int t,int f){
