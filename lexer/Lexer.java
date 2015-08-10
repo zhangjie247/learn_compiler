@@ -76,10 +76,10 @@ public class Lexer{
             Word w = (Word)words.get(s);
             if (w!=null) return w;
             w = new Word(s,Tag.ID);
-            words.pub(s,w);
+            words.put(s,w);
             return w;
         }
-        Token tok = Token(peek);
+        Token tok = new Token(peek);
         peek = ' ';
         return tok;
     }

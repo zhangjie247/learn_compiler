@@ -5,7 +5,8 @@ package inter;
  */
 import symbols.Type;
 import symbols.*;
-public class If extends Stmt{
+public class
+        If extends Stmt{
     Expr expr;
     Stmt stmt;
     public If(Expr x, Stmt s){

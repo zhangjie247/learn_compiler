@@ -9,6 +9,6 @@ public class Word extends Token{
         le = new Word("<=",Tag.LE), ge = new Word(">=",Tag.GE),
         minus = new Word("minus",Tag.MINUS),
         True = new Word("true",Tag.TRUE),
-        False = new Word("false",Tag.False),
+        False = new Word("false",Tag.FALSE),
         temp = new Word("temp",Tag.TEMP);
 }
