@@ -8,5 +8,5 @@ public class Temp extends Expr{
         super(Word.temp,p);
         number = ++count;
     }
-    public String toString(){return "t"+number}
+    public String toString(){return "t"+number;}
 }
