@@ -15,24 +15,28 @@ public class Parser {
     private Token look;
     Env top = null;
     int used = 0;
+    private Field[] fields = Tag.class.getDeclaredFields();
     public Parser(Lexer l) throws IOException{lex = l; move();}
     void move() throws IOException{ look = lex.scan();}
     void error(String s){throw new Error("near line " + lex.line + ": " + s);}
-    void match(int t) throws IOException{
-        if (look.tag == t) move();
-        else error("syntax error");
-        Field fields[] = Tag.class.getDeclaredFields();
+    private String getTagName(int t){
         for(Field x:fields) {
             try {
                 if (x.getInt(null) == t) {
-                    System.out.println(t);
-                } else if (Character.isLetter(t)) {
-                    System.out.println((char) t);
-                } else System.out.println(t);
+                    return x.getName();
+                }
             }catch(IllegalAccessException e){
                 e.printStackTrace();
             }
         }
+        return Character.toString((char)t);
+    }
+
+    void match(int t) throws IOException{
+        //System.out.println("try to match:" + getTagName(t) + ", meet: " + getTagName(look.tag));
+        if (look.tag == t) move();
+        else error("syntax error");
+
     }
     public void program() throws IOException{
         //program -> block
@@ -54,6 +58,7 @@ public class Parser {
             //D->type ID
             Type p = type(); Token tok = look; match(Tag.ID); match(';');
             Id id = new Id((Word)tok,p,used);
+            //System.out.print(id.toString());
             top.put(tok, id);
             used += p.width;
         }

@@ -13,6 +13,7 @@ public class Do extends Stmt {
         if (expr.type != Type.Bool) expr.error("boolean required in do");
     }
     public void gen(int b, int a){
+        //System.out.println("into do.gen()");
         after = a;
         int label = newlabel();
         stmt.gen(b,label);
